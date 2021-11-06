@@ -82,6 +82,15 @@ class WordAdapter(private val letterId: String, context: Context) :
         // Set the text of the WordViewHolder
         holder.button.text = item
 
+        // using String formatting($) for item to be appended to SearchPrefix constant
+        //URI consist of URL Uniform Resource Locator and URN Uniform Resource Name - for phone number address
+        holder.button.setOnClickListener {
+            val queryUrl: Uri = Uri.parse("${DetailActivity.SEARCH_PREFIX}${item}")
+            val intent = Intent(Intent.ACTION_VIEW, queryUrl)
+
+            context.startActivity(intent)
+        }
+
     }
     // Setup custom accessibility delegate to set the text read with
     // an accessibility service
